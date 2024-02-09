@@ -40,7 +40,10 @@ namespace Vector_Calculator
             return GetDirection() * (180 / MathF.PI);
             // In Degrees
         }
-
+        public static float test(Vector v)
+        {
+            return v.GetDirection();
+        }
         public static Vector Add(Vector v1, Vector v2)
         {
             return new Vector(v1.x + v2.x, v1.y + v2.y, v1.z + v2.z);
@@ -68,26 +71,23 @@ namespace Vector_Calculator
 
         public static float DotProduct(Vector v1, Vector v2)
         {
-            // ADD CODE HERE, THEN REMOVE BELOW LINE
-            throw new NotImplementedException();
+            Vector j = new Vector(v1.x * v2.x, v1.y * v2.y, v1.z * v2.z);
+            return (j.x + j.y + j.z);
         }
 
         public static Vector CrossProduct(Vector v1, Vector v2)
         {
-            // ADD CODE HERE, THEN REMOVE BELOW LINE
-            throw new NotImplementedException();
+            return new Vector(((v1.y - v2.z) - (v1.z - v2.y)), ((v1.z * v2.x) - (v1.x - v2.z)), ((v1.x * v2.y) - (v1.y - v2.x)));
         }
 
-        public static Vector AngleBetween(Vector v1, Vector v2)
+        public static float AngleBetween(Vector v1, Vector v2)
         {
-            // ADD CODE HERE, THEN REMOVE BELOW LINE
-            throw new NotImplementedException();
+            return (MathF.Acos(DotProduct(v1, v2) / (v1.GetMagnitude() * v2.GetMagnitude())) * 180 / MathF.PI);
         }
 
         public static Vector ProjectOnto(Vector v1, Vector v2)
         {
-            // ADD CODE HERE, THEN REMOVE BELOW LINE
-            throw new NotImplementedException();
+            return new Vector(((DotProduct(v1, v2)) / (v2.GetMagnitude() * v2.GetMagnitude())) * v2.x, ((DotProduct(v1, v2)) / (v2.GetMagnitude() * v2.GetMagnitude())) * v2.y, ((DotProduct(v1, v2)) / (v2.GetMagnitude() * v2.GetMagnitude())) * v2.z);
         }
     }
 }
